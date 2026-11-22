@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<{
   /** length of the lit segment */
   seg?: number
   color?: string
-}>(), { speed: 1100, seg: 90, color: 'var(--accent)' })
+}>(), { speed: 1100, seg: 90, color: 'var(--hit)' })
 
 const host = ref<SVGGElement>()
 const { live, epoch } = useBeats()
@@ -63,15 +63,22 @@ function fire(opts: { speed?: number } = {}): Promise<boolean> {
   const glow = layer(12, 0.22, seg, gap, 'blur(3px)')
   const core = layer(3, 0.95, seg, gap)
   const tip = layer(6, 1, head, gap)
-  tip.style.stroke = '#fff4f2'
+  tip.style.stroke = '#fffaf0'
 
   // Segment covers [-offset, -offset + seg]; slide it from before the start
   // to past the end. The head rides on the segment's front edge.
   const timing: KeyframeAnimationOptions = { duration, easing: 'linear', fill: 'forwards' }
+  // opacity fades in over the first 6% and out after 88% (reference: ss-head)
+  const fade = (from: number, to: number, o: number) => [
+    { strokeDashoffset: from, opacity: 0 },
+    { opacity: o, offset: 0.06 },
+    { opacity: o, offset: 0.88 },
+    { strokeDashoffset: to, opacity: 0 },
+  ]
   const anims = [
-    glow.animate([{ strokeDashoffset: seg }, { strokeDashoffset: -len }], timing),
-    core.animate([{ strokeDashoffset: seg }, { strokeDashoffset: -len }], timing),
-    tip.animate([{ strokeDashoffset: head }, { strokeDashoffset: -len - seg + head }], timing),
+    glow.animate(fade(seg, -len, 0.22), timing),
+    core.animate(fade(seg, -len, 0.95), timing),
+    tip.animate(fade(head, -len - seg + head, 1), timing),
   ]
   anims.forEach(a => running.add(a))
 

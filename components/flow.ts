@@ -12,7 +12,7 @@ export interface FlowNode {
   sub?: string
   beat?: number
   fx?: Fx
-  tone?: 'default' | 'strong' | 'accent' | 'ghost'
+  tone?: 'default' | 'strong' | 'accent' | 'ghost' | 'live'
   /** label alignment inside the box */
   align?: 'center' | 'left'
 }

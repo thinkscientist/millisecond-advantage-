@@ -14,13 +14,20 @@
   --muted: #a9b7d9;
   --accent: #ff5a4e;
   --rule: rgba(255, 255, 255, 0.13);
-  --panel: rgba(255, 255, 255, 0.035);
+  --panel: #0a1130;
+  --panel-2: #111b45;
+  --panel-line: rgba(130, 150, 230, 0.22);
+  --live: #2347e6;
+  --hit: #e8d5b0;
+  --ink: #03050c;
   --hero: 136px;
   --body: 32px;
   --radius: 6px;
-  --font-display: 'Departure Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-mono: 'Departure Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --dur: 600ms;
 }
 
@@ -41,7 +48,34 @@ body,
 
 .display {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+/* Small uppercase mono label, the reference's workhorse */
+.label {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hit {
+  color: var(--hit);
+}
+/* Panels */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius);
+}
+.panel.live {
+  background: var(--live);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 60px rgba(35, 71, 230, 0.35);
 }
 .muted {
   color: var(--muted);
@@ -118,16 +152,48 @@ body,
   }
 }
 
-/* Digit flash for LiveNumber */
+/* New values arrive warm and cool down (reference: ss-hit / ss-cool) */
 .flash {
-  animation: flash 900ms var(--ease);
+  animation: ss-hit 900ms var(--ease-out);
 }
-@keyframes flash {
+.cool {
+  animation: ss-cool 900ms var(--ease-out);
+}
+@keyframes ss-hit {
   0%,
-  35% {
-    color: var(--accent);
-    text-shadow: 0 0 18px rgba(255, 90, 78, 0.55);
+  58% {
+    color: var(--hit);
   }
+}
+@keyframes ss-cool {
+  from {
+    color: var(--hit);
+  }
+}
+@keyframes ss-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes ss-sheen {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(110%);
+  }
+}
+@keyframes ss-enter {
+  from {
+    opacity: 0;
+  }
+}
+.breathe {
+  animation: ss-breathe 1.6s ease-in-out infinite;
 }
 
 /* SVG primitives */
@@ -152,8 +218,8 @@ body,
   fill: var(--accent);
 }
 .node-box {
-  fill: #070b17;
-  stroke: var(--rule);
+  fill: var(--panel);
+  stroke: var(--panel-line);
   stroke-width: 2;
 }
 .node-box.strong {
@@ -163,12 +229,23 @@ body,
   stroke: var(--accent);
   fill: rgba(255, 90, 78, 0.06);
 }
+.node-box.live {
+  fill: var(--live);
+  stroke: rgba(255, 255, 255, 0.35);
+}
+.node-glow {
+  fill: none;
+  stroke: var(--hit);
+  stroke-width: 2;
+  opacity: 0;
+  filter: drop-shadow(0 0 10px rgba(232, 213, 176, 0.8));
+}
 .node-box.ghost {
   fill: transparent;
   stroke-dasharray: 6 8;
 }
 .node-label {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: 30px;
   fill: var(--text);
 }
@@ -178,7 +255,7 @@ body,
   fill: var(--muted);
 }
 .svg-mono {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   fill: var(--text);
 }
 .svg-body {
@@ -189,6 +266,8 @@ body,
 /* Reduced motion: never run reveals, show final states */
 @media (prefers-reduced-motion: reduce) {
   .beat.play,
+  .breathe,
+  .cool,
   .flash {
     animation: none !important;
   }
@@ -197,4 +276,12 @@ body,
 /* Slidev print: no fade between pages */
 html.print .beat.play {
   animation: none !important;
+}
+
+/* Keep Slidev's canvas dark so cross-fades never wash through to white */
+#slide-content,
+#page-root,
+.slidev-slide-content,
+.slidev-slides-container {
+  background: var(--bg) !important;
 }

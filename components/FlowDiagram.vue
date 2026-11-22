@@ -7,6 +7,7 @@
  *   default  extra SVG drawn on top (pulses, labels)
  *   html     absolutely positioned HTML on top (live numbers, cards)
  */
+import { onBeforeUnmount } from 'vue'
 import { arrowHead, trim, wirePath, type FlowNode, type FlowWire } from './flow'
 import { useBeats } from './useBeats'
 
@@ -17,7 +18,23 @@ const props = withDefaults(defineProps<{
   height?: number
 }>(), { nodes: () => [], wires: () => [], width: 1680, height: 660 })
 
-const { b, at } = useBeats()
+const { b, at, live } = useBeats()
+
+// Node glow when something lands: rise 80 ms, decay 700 ms (reference timings).
+const glows = new Map<string, SVGRectElement>()
+const glowAnims = new Set<Animation>()
+function flash(id: string, strength = 1) {
+  const el = glows.get(id)
+  if (!el || !live.value) return
+  const a = el.animate(
+    [{ opacity: 0 }, { opacity: strength, offset: 80 / 780, easing: 'cubic-bezier(0, 0, 0.2, 1)' }, { opacity: 0 }],
+    { duration: 780 },
+  )
+  glowAnims.add(a)
+  a.finished.finally(() => glowAnims.delete(a))
+}
+onBeforeUnmount(() => glowAnims.forEach(a => a.cancel()))
+defineExpose({ flash })
 
 function wireClass(w: FlowWire) {
   return [
@@ -58,6 +75,10 @@ function labelX(n: FlowNode) {
           <rect
             :x="n.x" :y="n.y" :width="n.w" :height="n.h" rx="6"
             class="node-box" :class="n.tone && n.tone !== 'default' ? n.tone : ''"
+          />
+          <rect
+            :ref="(el: any) => el && glows.set(n.id, el)"
+            :x="n.x" :y="n.y" :width="n.w" :height="n.h" rx="6" class="node-glow"
           />
           <text
             class="node-label"

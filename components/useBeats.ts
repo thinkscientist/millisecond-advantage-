@@ -39,15 +39,18 @@ export function useBeats() {
   // keyframes only play for elements at this beat.
   const fresh = ref(-1)
   const epoch = ref(0)
+  /** bumps each time this slide comes on screen; drives entry effects */
+  const entered = ref(active.value ? 1 : 0)
 
   watch(clicks, (n, o) => {
     fresh.value = o !== undefined && n === o + 1 ? n : -1
     if (o !== undefined && n < o)
       epoch.value++
   })
-  watch(active, () => {
+  watch(active, (v) => {
     fresh.value = -1
     epoch.value++
+    if (v) entered.value++
   })
 
   function b(n: number, fx: Fx = 'fade') {
@@ -62,5 +65,5 @@ export function useBeats() {
 
   const at = (n: number) => clicks.value >= n
 
-  return { clicks, active, isStatic, live, reduced, epoch, b, at }
+  return { clicks, active, isStatic, live, reduced, epoch, entered, b, at }
 }

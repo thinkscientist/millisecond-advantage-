@@ -1,8 +1,10 @@
 <script setup lang="ts">
 /**
- * Pillar slide frame: title top-left, a fixed 1680x660 diagram slot, and a
- * one-line takeaway pinned to the bottom that rises in at `takeawayAt`.
+ * Pillar slide frame: decoding title top-left, a fixed 1680x660 diagram
+ * slot, and a one-line takeaway pinned above the scene nav that rises in at
+ * `takeawayAt`.
  */
+import Decode from './Decode.vue'
 import { useBeats } from './useBeats'
 
 withDefaults(defineProps<{
@@ -18,15 +20,14 @@ const { b } = useBeats()
 <template>
   <div class="pillar">
     <header class="pillar-head">
-      <h1 class="display">{{ title }}</h1>
+      <Decode tag="h1" class="display" :text="title" />
       <p v-if="kicker" class="kicker muted">{{ kicker }}</p>
     </header>
     <section class="pillar-diagram">
       <slot />
     </section>
     <footer v-if="takeaway" class="pillar-takeaway" :class="b(takeawayAt, 'rise')">
-      <span class="bar" />
-      <span>{{ takeaway }}</span>
+      {{ takeaway }}
     </footer>
   </div>
 </template>
@@ -39,27 +40,24 @@ const { b } = useBeats()
 .pillar-head {
   position: absolute;
   left: 120px;
-  top: 104px;
+  top: 52px;
   right: 120px;
-  display: flex;
-  align-items: baseline;
-  gap: 40px;
 }
-.pillar-head h1 {
-  font-size: 72px;
-  line-height: 1;
+.pillar-head :deep(h1) {
+  font-size: 76px;
+  line-height: 84px;
   margin: 0;
-  font-weight: 400;
   white-space: nowrap;
 }
 .kicker {
-  font-size: 28px;
-  margin: 0;
+  font-size: 30px;
+  line-height: 38px;
+  margin: 6px 0 0;
 }
 .pillar-diagram {
   position: absolute;
   left: 120px;
-  top: 236px;
+  top: 200px;
   width: 1680px;
   height: 660px;
 }
@@ -67,19 +65,11 @@ const { b } = useBeats()
   position: absolute;
   left: 120px;
   right: 120px;
-  bottom: 64px;
-  padding-top: 28px;
-  border-top: 1px solid var(--rule);
-  font-size: 36px;
-  display: flex;
-  align-items: center;
-  gap: 22px;
+  bottom: 120px;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   white-space: nowrap;
-}
-.bar {
-  width: 28px;
-  height: 4px;
-  background: var(--accent);
-  flex: none;
 }
 </style>
