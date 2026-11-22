@@ -1,0 +1,18 @@
+{
+  "name": "millisecond-advantage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open false",
+    "build": "slidev build --base /",
+    "export": "slidev export --with-clicks",
+    "export:pptx": "slidev export --format pptx"
+  },
+  "dependencies": {
+    "@slidev/cli": "^53.1.0",
+    "vue": "^3.5.46"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.65.1"
+  }
+}

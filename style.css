@@ -1,0 +1,200 @@
+/* ───────────── Fonts ───────────── */
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block; /* never flash a fallback font */
+}
+
+/* ───────────── Tokens ───────────── */
+:root {
+  --bg: #03050c;
+  --text: #f3f6fc;
+  --muted: #a9b7d9;
+  --accent: #ff5a4e;
+  --rule: rgba(255, 255, 255, 0.13);
+  --panel: rgba(255, 255, 255, 0.035);
+  --hero: 136px;
+  --body: 32px;
+  --radius: 6px;
+  --font-display: 'Departure Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 600ms;
+}
+
+html,
+body,
+#app {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.slidev-layout,
+.slidev-page {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--body);
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+.muted {
+  color: var(--muted);
+}
+.accent {
+  color: var(--accent);
+}
+
+/* ───────────── Beats & reveals ─────────────
+   .beat      hidden until its beat
+   .beat.on   visible (final state, no motion)
+   .beat.play the step it first appears: run its keyframe once            */
+.beat:not(.on) {
+  opacity: 0 !important;
+}
+.wire.dashed.beat.on {
+  opacity: 0.7;
+}
+.beat.play {
+  animation-duration: var(--dur);
+  animation-timing-function: var(--ease);
+  animation-fill-mode: both;
+}
+.beat.play.fx-fade {
+  animation-name: fx-fade;
+}
+.beat.play.fx-rise {
+  animation-name: fx-rise;
+}
+.beat.play.fx-lift {
+  animation-name: fx-lift;
+}
+.beat.play.fx-draw-x {
+  animation-name: fx-draw-x;
+  animation-duration: 900ms;
+}
+.beat.play.fx-stroke {
+  stroke-dasharray: 1;
+  animation-name: fx-stroke;
+  animation-duration: 900ms;
+}
+
+@keyframes fx-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fx-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes fx-lift {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes fx-draw-x {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes fx-stroke {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Digit flash for LiveNumber */
+.flash {
+  animation: flash 900ms var(--ease);
+}
+@keyframes flash {
+  0%,
+  35% {
+    color: var(--accent);
+    text-shadow: 0 0 18px rgba(255, 90, 78, 0.55);
+  }
+}
+
+/* SVG primitives */
+.wire {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.wire.dashed {
+  stroke-dasharray: 8 10;
+  opacity: 0.7;
+}
+.wire.hot {
+  stroke: var(--accent);
+}
+.arrow {
+  fill: var(--muted);
+}
+.arrow.hot {
+  fill: var(--accent);
+}
+.node-box {
+  fill: #070b17;
+  stroke: var(--rule);
+  stroke-width: 2;
+}
+.node-box.strong {
+  stroke: var(--muted);
+}
+.node-box.accent {
+  stroke: var(--accent);
+  fill: rgba(255, 90, 78, 0.06);
+}
+.node-box.ghost {
+  fill: transparent;
+  stroke-dasharray: 6 8;
+}
+.node-label {
+  font-family: var(--font-display);
+  font-size: 30px;
+  fill: var(--text);
+}
+.node-sub {
+  font-family: var(--font-body);
+  font-size: 21px;
+  fill: var(--muted);
+}
+.svg-mono {
+  font-family: var(--font-display);
+  fill: var(--text);
+}
+.svg-body {
+  font-family: var(--font-body);
+  fill: var(--muted);
+}
+
+/* Reduced motion: never run reveals, show final states */
+@media (prefers-reduced-motion: reduce) {
+  .beat.play,
+  .flash {
+    animation: none !important;
+  }
+}
+
+/* Slidev print: no fade between pages */
+html.print .beat.play {
+  animation: none !important;
+}
