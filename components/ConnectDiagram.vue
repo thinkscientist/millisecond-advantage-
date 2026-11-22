@@ -177,22 +177,22 @@ watch([isStatic, clicks], () => { if (isStatic.value) prime() }, { immediate: tr
 .src-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
 .src-name { font-size: 26px; font-weight: 700; }
 .src-head .label { font-size: 15px; }
-.src-raw { font-size: 19px; white-space: nowrap; overflow: hidden; color: rgba(244, 244, 244, .85); }
+.src-raw { font-size: 19px; white-space: nowrap; overflow: hidden; color: rgba(var(--text-rgb), .85); }
 
 .chips { position: absolute; inset: 0; pointer-events: none; }
 .chips :deep(.cx-chip) {
   position: absolute; left: 0; top: 0; width: 120px; box-sizing: border-box;
   padding: 6px 8px; border-radius: var(--radius); background: var(--hit); color: var(--ink);
-  font-size: 14px; line-height: 1.35; box-shadow: 0 0 18px rgba(120, 169, 255, .45);
+  font-size: 14px; line-height: 1.35; box-shadow: 0 0 18px rgba(var(--hit-rgb), .45);
 }
 
 .tbl { position: absolute; left: 1000px; top: 60px; width: 680px; box-sizing: border-box; padding: 18px 20px; background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius); }
 .tbl-title { font-size: 15px; margin-bottom: 14px; }
 .tbl-head, .tbl-row { display: grid; grid-template-columns: 130px 1fr 150px 70px; gap: 10px; white-space: nowrap; }
-.tbl-head { font-size: 15px; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+.tbl-head { font-size: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
 .tbl-head span:last-child, .tbl-row span:last-child { text-align: right; }
 .tbl-rows { position: relative; height: 264px; overflow: hidden; }
-.tbl-row { font-size: 18px; height: 44px; line-height: 44px; border-bottom: 1px solid rgba(255, 255, 255, .06); color: rgba(244, 244, 244, .8); }
+.tbl-row { font-size: 18px; height: 44px; line-height: 44px; border-bottom: 1px solid var(--rule); color: rgba(var(--text-rgb), .8); }
 .tbl-row.first { color: var(--text); }
 .age { color: var(--muted); }
 .mark { color: var(--hit); transition: color 400ms var(--ease); }

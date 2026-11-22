@@ -63,19 +63,25 @@
 
 /* ───────────── Tokens ───────────── */
 :root {
-  /* IBM Carbon, Gray 100 (dark) theme */
-  --bg: #161616; /* gray 100 */
-  --text: #f4f4f4; /* gray 10 */
-  --muted: #c6c6c6; /* gray 30 */
-  --accent: #fa4d56; /* red 50: alerts only */
-  --rule: #393939; /* gray 80 */
-  --panel: #262626; /* gray 90: layer 01 */
-  --panel-2: #393939; /* gray 80: layer 02 */
-  --panel-line: #393939;
+  /* IBM Carbon White (light) theme. html.dark switches to Gray 100 below.
+     Slidev's light/dark toggle sets html.dark; colorSchema: auto follows the OS. */
+  --bg: #ffffff;
+  --text: #161616; /* gray 100 */
+  --muted: #525252; /* gray 70: text-secondary */
+  --accent: #da1e28; /* red 60: alerts only */
+  --rule: #e0e0e0; /* gray 20 */
+  --panel: #f4f4f4; /* gray 10: layer 01 */
+  --panel-2: #e0e0e0; /* gray 20: layer 02 */
+  --panel-line: #c6c6c6; /* gray 30 */
   --live: #0f62fe; /* blue 60: IBM interactive */
-  --live-deep: #002d9c; /* blue 80 */
-  --hit: #78a9ff; /* blue 40: a value that just changed */
-  --ink: #161616;
+  --live-deep: #0043ce; /* blue 70 */
+  --hit: #0f62fe; /* a value that just changed */
+  --ink: #ffffff; /* text on a --hit background */
+  --pulse-tip: #002d9c; /* blue 80 */
+  --text-rgb: 22, 22, 22;
+  --muted-rgb: 82, 82, 82;
+  --hit-rgb: 15, 98, 254;
+  --accent-rgb: 218, 30, 40;
   --hero: 136px;
   --body: 32px;
   --radius: 0px; /* Carbon: square corners */
@@ -86,6 +92,45 @@
   --ease: cubic-bezier(0, 0, 0.38, 0.9);
   --ease-out: cubic-bezier(0, 0, 0.38, 0.9);
   --dur: 600ms;
+  color-scheme: light;
+}
+
+html.dark {
+  /* IBM Carbon Gray 100 (dark) theme */
+  --bg: #161616;
+  --text: #f4f4f4; /* gray 10 */
+  --muted: #c6c6c6; /* gray 30 */
+  --accent: #fa4d56; /* red 50 */
+  --rule: #393939; /* gray 80 */
+  --panel: #262626; /* gray 90 */
+  --panel-2: #393939;
+  --panel-line: #393939;
+  --live: #0f62fe;
+  --live-deep: #002d9c; /* blue 80 */
+  --hit: #78a9ff; /* blue 40 */
+  --ink: #161616;
+  --pulse-tip: #ffffff;
+  --text-rgb: 244, 244, 244;
+  --muted-rgb: 198, 198, 198;
+  --hit-rgb: 120, 169, 255;
+  --accent-rgb: 250, 77, 86;
+  color-scheme: dark;
+}
+
+/* Blue "live" surfaces read white-on-blue in both themes: re-scope the
+   tokens for everything inside them. */
+.panel.live,
+.on-live {
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.78);
+  --rule: rgba(255, 255, 255, 0.22);
+  --panel-line: rgba(255, 255, 255, 0.4);
+  --hit: #d0e2ff; /* blue 20 */
+  --ink: #002d9c;
+  --text-rgb: 255, 255, 255;
+  --muted-rgb: 255, 255, 255;
+  --hit-rgb: 208, 226, 255;
+  color: var(--text);
 }
 
 html,
@@ -132,7 +177,7 @@ body,
 .panel.live {
   background: var(--live);
   border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 60px rgba(15, 98, 254, 0.35);
+  box-shadow: 0 0 60px rgba(15, 98, 254, 0.3);
 }
 .muted {
   color: var(--muted);
@@ -295,7 +340,7 @@ body,
   stroke: var(--hit);
   stroke-width: 2;
   opacity: 0;
-  filter: drop-shadow(0 0 10px rgba(120, 169, 255, 0.8));
+  filter: drop-shadow(0 0 10px rgba(var(--hit-rgb), 0.8));
 }
 .node-box.ghost {
   fill: transparent;

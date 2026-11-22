@@ -85,8 +85,8 @@ const pad = (n: number) => String(n).padStart(2, '0')
 .scene-nav .sec.future { opacity: 0.62; }
 .scene-nav .sec-name { cursor: pointer; }
 .scene-nav .ticks { display: flex; gap: 6px; }
-.scene-nav .tick { width: 28px; height: 4px; background: rgba(198, 198, 198, 0.22); cursor: pointer; transition: background-color 200ms ease; }
-.scene-nav .tick.past { background: rgba(198, 198, 198, 0.7); }
+.scene-nav .tick { width: 28px; height: 4px; background: rgba(var(--muted-rgb), 0.22); cursor: pointer; transition: background-color 200ms ease; }
+.scene-nav .tick.past { background: rgba(var(--muted-rgb), 0.7); }
 .scene-nav .tick.on { background: var(--text); }
 .scene-nav .page { margin-left: auto; color: var(--muted); }
 
@@ -94,8 +94,8 @@ const pad = (n: number) => String(n).padStart(2, '0')
   position: absolute; right: 120px; bottom: 178px; display: flex; gap: 6px; z-index: 3;
   padding: 8px; border: 1px solid var(--panel-line); border-radius: var(--radius); background: var(--panel);
 }
-.beat-ind span { width: 26px; height: 14px; border-radius: 2px; background: rgba(198, 198, 198, 0.18); transition: background-color 250ms ease; }
-.beat-ind span.on { background: rgba(198, 198, 198, 0.6); }
+.beat-ind span { width: 26px; height: 14px; border-radius: 2px; background: rgba(var(--muted-rgb), 0.18); transition: background-color 250ms ease; }
+.beat-ind span.on { background: rgba(var(--muted-rgb), 0.6); }
 .beat-ind span.now { background: var(--text); }
 
 </style>

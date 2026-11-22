@@ -179,7 +179,7 @@ watch([isStatic, clicks], () => { if (isStatic.value) prime() }, { immediate: tr
 .recs { position: absolute; left: 0; top: 0; width: 1000px; height: 300px; box-sizing: border-box; padding: 16px 20px; }
 .recs-head { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 12px; }
 .recs-rows { position: relative; height: 232px; overflow: hidden; }
-.recs-row { height: 58px; line-height: 58px; font-size: 22px; border-bottom: 1px solid rgba(255, 255, 255, .06); white-space: nowrap; overflow: hidden; transition: color 300ms; }
+.recs-row { height: 58px; line-height: 58px; font-size: 22px; border-bottom: 1px solid var(--rule); white-space: nowrap; overflow: hidden; transition: color 300ms; }
 .recs-row.bytes { font-size: 17px; color: var(--muted); }
 .recs-row.struck { color: var(--accent); text-decoration: line-through; text-decoration-thickness: 2px; }
 .shove-move { transition: transform 360ms var(--ease); }
@@ -192,7 +192,7 @@ watch([isStatic, clicks], () => { if (isStatic.value) prime() }, { immediate: tr
 .c-head { font-size: 15px; margin-bottom: 8px; color: var(--hit); }
 .field { display: flex; justify-content: space-between; font-size: 18px; line-height: 31px; }
 
-.dead { position: absolute; left: 1080px; top: 230px; width: 600px; height: 70px; box-sizing: border-box; padding: 10px 20px; border-color: rgba(250, 77, 86, .55); }
+.dead { position: absolute; left: 1080px; top: 230px; width: 600px; height: 70px; box-sizing: border-box; padding: 10px 20px; border-color: rgba(var(--accent-rgb), .55); }
 .d-head { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
 .d-row { font-size: 18px; white-space: nowrap; }
 .d-row.cool { animation: d-hit 900ms var(--ease-out); }

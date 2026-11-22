@@ -1,6 +1,7 @@
 ---
 theme: none
 layout: dark
+colorSchema: auto
 canvasWidth: 1920
 aspectRatio: 16/9
 transition: fade

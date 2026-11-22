@@ -63,7 +63,7 @@ function fire(opts: { speed?: number } = {}): Promise<boolean> {
   const glow = layer(12, 0.22, seg, gap, 'blur(3px)')
   const core = layer(3, 0.95, seg, gap)
   const tip = layer(6, 1, head, gap)
-  tip.style.stroke = '#ffffff'
+  tip.style.stroke = 'var(--pulse-tip)'
 
   // Segment covers [-offset, -offset + seg]; slide it from before the start
   // to past the end. The head rides on the segment's front edge.

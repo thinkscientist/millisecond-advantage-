@@ -7,7 +7,8 @@ pnpm install
 pnpm dev            # http://localhost:3030 — /9 opens the Process slide
 pnpm build          # static SPA in dist/ (SPA fallbacks: public/_redirects, vercel.json)
 pnpm build:web      # portable static build for GitHub Pages (hash routes, relative paths)
-pnpm export         # PDF, one page per click
+pnpm export         # PDF, one page per click (light)
+pnpm export:dark    # PDF in the dark theme
 pnpm export:pptx    # PPTX (slides as images)
 ```
 

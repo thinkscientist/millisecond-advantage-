@@ -10,7 +10,7 @@
  * Beat 4  the replay rewinds a week: the log keeps what you tell it to keep
  * Beat 5  takeaway (PillarSlide)
  */
-import { computed, onBeforeUnmount, reactive, ref, watch } from 'vue'
+import { onMounted, computed, onBeforeUnmount, reactive, ref, watch } from 'vue'
 import Flap from './Flap.vue'
 import WirePulse from './WirePulse.vue'
 import {
@@ -70,21 +70,27 @@ function buildHistory() {
 const canvas = ref<HTMLCanvasElement>()
 let raf = 0
 let t0 = performance.now()
+// Canvas can't read CSS variables, so pull the theme's colours at draw time.
+function themeRgb(c: HTMLElement) {
+  const cs = getComputedStyle(c)
+  return { muted: cs.getPropertyValue('--muted-rgb').trim(), hit: cs.getPropertyValue('--hit-rgb').trim(), text: cs.getPropertyValue('--text-rgb').trim() }
+}
 function draw() {
   const c = canvas.value
   if (!c) return
+  const rgb = themeRgb(c)
   const g = c.getContext('2d')!
   g.clearRect(0, 0, CW, CH)
   const laneH = CH / LANES
   // lane rules
-  g.fillStyle = 'rgba(255,255,255,0.04)'
+  g.fillStyle = `rgba(${rgb.text},0.05)`
   for (let l = 0; l < LANES; l++) g.fillRect(0, l * laneH + laneH * 0.2, CW, laneH * 0.6)
   for (const bar of bars) {
     const age = simNow - bar.t
     const x = xOfAge(age)
     const fresh = bar.live && age < 2500
     const a = fresh ? 1 : Math.max(0.28, 0.85 - (Math.log10(Math.max(age, NEWEST)) - L0) / (L1 - L0) * 0.55)
-    g.fillStyle = fresh ? `rgba(120, 169, 255,${a})` : `rgba(198, 198, 198,${a})`
+    g.fillStyle = fresh ? `rgba(${rgb.hit},${a})` : `rgba(${rgb.muted},${a})`
     g.fillRect(x - bar.w / 2, bar.lane * laneH + laneH * 0.18, bar.w, laneH * 0.64)
   }
 }
@@ -101,6 +107,12 @@ function start() {
   raf = requestAnimationFrame(loop)
 }
 onBeforeUnmount(() => cancelAnimationFrame(raf))
+// Redraw when the light/dark toggle flips (matters when the canvas is static).
+const themeObserver = typeof MutationObserver !== 'undefined'
+  ? new MutationObserver(() => draw())
+  : undefined
+onMounted(() => themeObserver?.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] }))
+onBeforeUnmount(() => themeObserver?.disconnect())
 
 // ── Values: the live number, and the number as of earlier moments ──────
 const prices = reactive<Record<string, number>>({ ...START_PRICES })

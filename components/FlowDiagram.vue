@@ -71,7 +71,7 @@ function labelX(n: FlowNode) {
         </template>
       </g>
       <g class="nodes">
-        <g v-for="n in props.nodes" :key="n.id" :class="b(n.beat ?? 0, n.fx ?? 'lift')" :data-node="n.id">
+        <g v-for="n in props.nodes" :key="n.id" :class="[b(n.beat ?? 0, n.fx ?? 'lift'), { 'on-live': n.tone === 'live' }]" :data-node="n.id">
           <rect
             :x="n.x" :y="n.y" :width="n.w" :height="n.h" rx="6"
             class="node-box" :class="n.tone && n.tone !== 'default' ? n.tone : ''"

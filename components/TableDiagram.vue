@@ -145,7 +145,7 @@ const mil = (n: number) => `${(n / 1e6).toFixed(1)}M`
 .row { height: 52px; font-size: 22px; border-bottom: 1px solid var(--rule); }
 .row.over span:first-child { color: var(--hit); }
 .used { display: flex; align-items: center; gap: 14px; justify-content: flex-end; }
-.bar { flex: 1; height: 8px; background: rgba(198, 198, 198, .16); border-radius: 4px; overflow: hidden; }
+.bar { flex: 1; height: 8px; background: rgba(var(--muted-rgb), .16); border-radius: 4px; overflow: hidden; }
 .fill { display: block; height: 100%; background: var(--muted); transition: width 600ms var(--ease); }
 .over .fill { background: var(--hit); }
 .used > span:last-child { width: 90px; text-align: right; }
