@@ -186,7 +186,7 @@ clicks: 4
 
 <PillarSlide
   title="Works with the Lakehouse"
-  takeaway="Lakehouse for what happened. Streamhouse for what is happening, and what happens next."
+  takeaway="Lakehouse for what happened. Streamhouse for what happens next."
   :takeaway-at="4"
 >
   <LakehouseDiagram />
