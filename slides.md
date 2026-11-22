@@ -14,17 +14,20 @@ scene: PREMISE · 01
 ---
 
 <div class="title-slide">
-  <div class="eyebrow display muted">STREAMHOUSE ARCHITECTURE · 2026</div>
-  <h1 class="display hero">The Millisecond<br>Advantage</h1>
+  <div class="eyebrow label">streamhouse architecture · 2026</div>
+  <h1 class="display hero">
+    <Decode tag="div" text="The Millisecond" />
+    <Decode tag="div" text="Advantage" :delay="130" />
+  </h1>
   <p class="lede muted">Why AI agents need data that is current,<br>not just correct.</p>
   <TitleWire />
 </div>
 
 <style>
 .title-slide { position: absolute; inset: 0; padding: 0 120px; }
-.title-slide .eyebrow { position: absolute; top: 300px; font-size: 22px; letter-spacing: 0.14em; }
-.title-slide .hero { position: absolute; top: 350px; margin: 0; font-size: var(--hero); line-height: 1.02; font-weight: 400; }
-.title-slide .lede { position: absolute; top: 680px; margin: 0; font-size: 40px; line-height: 1.35; }
+.title-slide .eyebrow { position: absolute; top: 290px; font-size: 22px; }
+.title-slide .hero { position: absolute; top: 330px; margin: 0; font-size: var(--hero); line-height: 1.02; letter-spacing: -0.04em; }
+.title-slide .lede { position: absolute; top: 640px; margin: 0; font-size: 40px; line-height: 1.35; animation: ss-enter 700ms var(--ease-out) 600ms both; }
 </style>
 
 ---
@@ -48,33 +51,13 @@ scene: PREMISE · 03
 scene: PREMISE · 04
 ---
 
-<div class="statement">
-  <h1 class="display">Agents need a new<br><span class="accent">real-time</span> architecture.</h1>
-  <p class="muted">A person waits fifteen minutes and complains.<br>An agent acts on whatever it is given, thousands of times a second.</p>
-</div>
-
-<style>
-.statement { position: absolute; left: 120px; right: 120px; top: 300px; }
-.statement h1 { font-size: 112px; line-height: 1.08; font-weight: 400; margin: 0 0 64px; }
-.statement p { font-size: 40px; line-height: 1.4; margin: 0; }
-</style>
+<ThesisSlide />
 
 ---
 scene: ARCHITECTURE · 01
 ---
 
-<div class="sentence">
-  <div class="eyebrow display muted">THE STREAMHOUSE IN ONE SENTENCE</div>
-  <p class="big">A streamhouse keeps every business event as a <span class="accent">durable, ordered, governed stream</span>, and computes answers as events arrive, so every reader sees the same current truth.</p>
-  <p class="muted small">An architecture, not a product: a pattern you can build from parts you already run.</p>
-</div>
-
-<style>
-.sentence { position: absolute; left: 120px; right: 220px; top: 240px; }
-.sentence .eyebrow { font-size: 22px; letter-spacing: 0.14em; margin-bottom: 48px; }
-.sentence .big { font-size: 60px; line-height: 1.3; margin: 0 0 64px; }
-.sentence .small { font-size: 34px; margin: 0; }
-</style>
+<SentenceSlide />
 
 ---
 scene: ARCHITECTURE · 02
@@ -260,20 +243,23 @@ clicks: 2
 ---
 
 <div class="playbook">
-  <h1 class="display">The playbook</h1>
+  <Decode tag="h1" class="display" text="The playbook" />
   <B :at="1" tag="ol" fx="rise" class="steps">
-    <li><span class="n display accent">01</span>Connect the events, not the copies.</li>
-    <li><span class="n display accent">02</span>Keep the answer current where the events land.</li>
-    <li><span class="n display accent">03</span>Let people and agents read the same live table.</li>
+    <li><span class="n mono accent">01</span>Connect the events, not the copies.</li>
+    <li><span class="n mono accent">02</span>Keep the answer current where the events land.</li>
+    <li><span class="n mono accent">03</span>Let people and agents read the same live table.</li>
   </B>
-  <B :at="2" fx="rise" class="close display">The advantage is measured in milliseconds.</B>
+  <B :at="2" fx="fade" class="close">
+    <Decode v-if="$clicks >= 2" tag="div" class="display" text="The advantage is measured in milliseconds." />
+  </B>
 </div>
 
 <style>
-.playbook { position: absolute; left: 120px; right: 120px; top: 104px; bottom: 64px; }
-.playbook h1 { font-size: 72px; line-height: 1; margin: 0 0 96px; font-weight: 400; }
-.playbook .steps { list-style: none; margin: 0; padding: 0; font-size: 48px; line-height: 1.3; }
-.playbook .steps li { display: flex; gap: 40px; padding: 28px 0; border-top: 1px solid var(--rule); }
-.playbook .steps .n { font-size: 32px; padding-top: 10px; width: 60px; }
-.playbook .close { position: absolute; bottom: 0; left: 0; font-size: 56px; white-space: nowrap; }
+.playbook { position: absolute; left: 120px; right: 120px; top: 52px; }
+.playbook h1 { font-size: 76px; line-height: 84px; margin: 0 0 72px; }
+.playbook .steps { list-style: none; margin: 0; padding: 0; font-size: 46px; line-height: 1.3; }
+.playbook .steps li { display: flex; gap: 40px; padding: 26px 0; border-top: 1px solid var(--rule); }
+.playbook .steps li:nth-child(2) { animation-delay: 90ms; }
+.playbook .steps .n { font-size: 28px; padding-top: 12px; width: 60px; }
+.playbook .close { position: absolute; top: 700px; left: 0; font-size: 64px; line-height: 1.1; white-space: nowrap; letter-spacing: -0.03em; }
 </style>
