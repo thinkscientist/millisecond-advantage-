@@ -1,33 +1,90 @@
 /* ───────────── Fonts ───────────── */
+/* IBM Plex Sans and IBM Plex Mono (SIL OFL 1.1), self-hosted.
+   font-display: block so the deck never flashes a fallback font. */
 @font-face {
-  font-family: 'Departure Mono';
-  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2');
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-plex-sans-latin-300-normal.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-plex-sans-greek-300-normal.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+0370-03FF;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: block; /* never flash a fallback font */
+  font-display: block;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-plex-sans-greek-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+0370-03FF;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-plex-sans-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-plex-sans-greek-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+0370-03FF;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
 }
 
 /* ───────────── Tokens ───────────── */
 :root {
-  --bg: #03050c;
-  --text: #f3f6fc;
-  --muted: #a9b7d9;
-  --accent: #ff5a4e;
-  --rule: rgba(255, 255, 255, 0.13);
-  --panel: #0a1130;
-  --panel-2: #111b45;
-  --panel-line: rgba(130, 150, 230, 0.22);
-  --live: #2347e6;
-  --hit: #e8d5b0;
-  --ink: #03050c;
+  /* IBM Carbon, Gray 100 (dark) theme */
+  --bg: #161616; /* gray 100 */
+  --text: #f4f4f4; /* gray 10 */
+  --muted: #c6c6c6; /* gray 30 */
+  --accent: #fa4d56; /* red 50: alerts only */
+  --rule: #393939; /* gray 80 */
+  --panel: #262626; /* gray 90: layer 01 */
+  --panel-2: #393939; /* gray 80: layer 02 */
+  --panel-line: #393939;
+  --live: #0f62fe; /* blue 60: IBM interactive */
+  --live-deep: #002d9c; /* blue 80 */
+  --hit: #78a9ff; /* blue 40: a value that just changed */
+  --ink: #161616;
   --hero: 136px;
   --body: 32px;
-  --radius: 6px;
-  --font-mono: 'Departure Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --font-display: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --radius: 0px; /* Carbon: square corners */
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --font-display: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  /* Carbon motion: productive standard and entrance curves */
+  --ease: cubic-bezier(0, 0, 0.38, 0.9);
+  --ease-out: cubic-bezier(0, 0, 0.38, 0.9);
   --dur: 600ms;
 }
 
@@ -48,8 +105,8 @@ body,
 
 .display {
   font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-weight: 300; /* IBM expressive display: Plex Sans Light */
+  letter-spacing: 0;
 }
 .mono {
   font-family: var(--font-mono);
@@ -75,7 +132,7 @@ body,
 .panel.live {
   background: var(--live);
   border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 60px rgba(35, 71, 230, 0.35);
+  box-shadow: 0 0 60px rgba(15, 98, 254, 0.35);
 }
 .muted {
   color: var(--muted);
@@ -227,7 +284,7 @@ body,
 }
 .node-box.accent {
   stroke: var(--accent);
-  fill: rgba(255, 90, 78, 0.06);
+  fill: rgba(250, 77, 86, 0.06);
 }
 .node-box.live {
   fill: var(--live);
@@ -238,7 +295,7 @@ body,
   stroke: var(--hit);
   stroke-width: 2;
   opacity: 0;
-  filter: drop-shadow(0 0 10px rgba(232, 213, 176, 0.8));
+  filter: drop-shadow(0 0 10px rgba(120, 169, 255, 0.8));
 }
 .node-box.ghost {
   fill: transparent;

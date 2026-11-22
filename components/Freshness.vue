@@ -88,7 +88,7 @@ const whenLabel = (ms: number) => (ms < 0 ? `yesterday ${fmtWall(ms)}` : `today 
 .kind { font-size: 14px; }
 .when { font-size: 18px; color: var(--muted); white-space: nowrap; }
 .track { position: relative; height: 20px; }
-.bar { position: absolute; left: 0; top: 0; height: 20px; border-radius: 2px; background: rgba(169, 183, 217, .45); transform-origin: left; transition: width 300ms var(--ease); }
+.bar { position: absolute; left: 0; top: 0; height: 20px; border-radius: 2px; background: rgba(198, 198, 198, .45); transform-origin: left; transition: width 300ms var(--ease); }
 .age { font-size: 20px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .row.stale .bar { background: var(--accent); }
 .row.stale .age, .row.stale .name { color: var(--accent); }

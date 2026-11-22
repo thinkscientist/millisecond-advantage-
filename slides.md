@@ -26,7 +26,7 @@ scene: PREMISE · 01
 <style>
 .title-slide { position: absolute; inset: 0; padding: 0 120px; }
 .title-slide .eyebrow { position: absolute; top: 290px; font-size: 22px; }
-.title-slide .hero { position: absolute; top: 330px; margin: 0; font-size: var(--hero); line-height: 1.02; letter-spacing: -0.04em; }
+.title-slide .hero { position: absolute; top: 330px; margin: 0; font-size: var(--hero); line-height: 1.02; letter-spacing: 0; }
 .title-slide .lede { position: absolute; top: 640px; margin: 0; font-size: 40px; line-height: 1.35; animation: ss-enter 700ms var(--ease-out) 600ms both; }
 </style>
 
@@ -261,5 +261,5 @@ clicks: 2
 .playbook .steps li { display: flex; gap: 40px; padding: 26px 0; border-top: 1px solid var(--rule); }
 .playbook .steps li:nth-child(2) { animation-delay: 90ms; }
 .playbook .steps .n { font-size: 28px; padding-top: 12px; width: 60px; }
-.playbook .close { position: absolute; top: 700px; left: 0; font-size: 64px; line-height: 1.1; white-space: nowrap; letter-spacing: -0.03em; }
+.playbook .close { position: absolute; top: 700px; left: 0; font-size: 64px; line-height: 1.1; white-space: nowrap; letter-spacing: 0; }
 </style>

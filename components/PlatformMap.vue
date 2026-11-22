@@ -78,7 +78,7 @@ function landed(i: number) {
 <style scoped>
 .cell { position: absolute; left: 0; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding: 0 28px; }
 .cell.left { align-items: center; text-align: center; }
-.name { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+.name { font-size: 30px; font-weight: 700; letter-spacing: 0; white-space: nowrap; }
 .sub { font-size: 15px; margin-top: 6px; white-space: nowrap; }
 .live { position: absolute; top: 14px; right: 16px; font-size: 13px; display: flex; gap: 8px; align-items: center; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hit); }

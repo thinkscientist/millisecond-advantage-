@@ -313,24 +313,24 @@ const OPS = [
 .in-val { font-size: 19px; white-space: nowrap; }
 
 .card { position: absolute; overflow: hidden; transition: background-color 500ms var(--ease), box-shadow 500ms var(--ease), border-color 500ms; }
-.card.live { background: #0d1a5c; }
+.card.live { background: var(--live-deep); }
 .card.live .card-head { background: var(--live); }
 .card-head {
   display: flex; justify-content: space-between; align-items: flex-start;
   padding: 18px 22px 14px; transition: background-color 500ms var(--ease);
 }
-.card-title { font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
-.card-sub { font-size: 16px; margin-top: 4px; color: rgba(243, 246, 252, .75); }
+.card-title { font-size: 30px; font-weight: 700; letter-spacing: 0; }
+.card-sub { font-size: 16px; margin-top: 4px; color: rgba(244, 244, 244, .75); }
 .mode { font-size: 15px; padding: 4px 10px; border-radius: 99px; border: 1px solid var(--panel-line); display: flex; gap: 8px; align-items: center; }
 .mode.on { border-color: rgba(255, 255, 255, .5); color: var(--text); }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hit); }
 .card-body { padding: 18px 22px 20px; }
 .row-meta { display: flex; justify-content: space-between; font-size: 16px; }
 .num-row { display: flex; align-items: center; justify-content: space-between; margin: 12px 0 8px; }
-.age { font-size: 20px; padding: 6px 12px; border-radius: 99px; border: 1px solid rgba(232, 213, 176, .5); color: var(--hit); }
+.age { font-size: 20px; padding: 6px 12px; border-radius: 99px; border: 1px solid rgba(120, 169, 255, .5); color: var(--hit); }
 .since { font-size: 16px; text-align: right; }
 .since.stale { color: var(--accent); }
-.card-glow { position: absolute; inset: 0; pointer-events: none; border-radius: var(--radius); box-shadow: inset 0 0 0 2px var(--hit), 0 0 30px rgba(232, 213, 176, .45); opacity: 0; }
+.card-glow { position: absolute; inset: 0; pointer-events: none; border-radius: var(--radius); box-shadow: inset 0 0 0 2px var(--hit), 0 0 30px rgba(120, 169, 255, .45); opacity: 0; }
 .card-glow.go { animation: glow 780ms both; }
 @keyframes glow { 0% { opacity: 0 } 10% { opacity: .9 } 100% { opacity: 0 } }
 
@@ -339,7 +339,7 @@ const OPS = [
 .contrib-head span:not(:first-child), .contrib-row span:not(:first-child) { text-align: right; }
 .contrib-head { font-size: 15px; margin-bottom: 6px; }
 .contrib-rows { position: relative; height: 102px; overflow: hidden; }
-.contrib-row { font-size: 17px; height: 34px; line-height: 34px; color: rgba(243, 246, 252, .82); }
+.contrib-row { font-size: 17px; height: 34px; line-height: 34px; color: rgba(244, 244, 244, .82); }
 .contrib-row.first { color: var(--text); }
 .shove-move { transition: transform 360ms var(--ease); }
 .shove-enter-active { transition: transform 360ms var(--ease), opacity 360ms var(--ease); }

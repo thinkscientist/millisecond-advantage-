@@ -177,7 +177,7 @@ const STATIC_CHIPS = RECS.slice(0, 3)
 .s-head { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; }
 .lane {
   position: relative; height: 110px; border-radius: var(--radius);
-  background: repeating-linear-gradient(90deg, rgba(169, 183, 217, .08) 0 2px, transparent 2px 26px), var(--panel);
+  background: repeating-linear-gradient(90deg, rgba(198, 198, 198, .08) 0 2px, transparent 2px 26px), var(--panel);
   border: 1px solid var(--panel-line);
 }
 .lane :deep(.chip), .lane .chip {
@@ -188,7 +188,7 @@ const STATIC_CHIPS = RECS.slice(0, 3)
 .t-head { display: flex; justify-content: space-between; font-size: 14px; }
 .t-cols { display: flex; justify-content: space-between; font-size: 13px; margin: 12px 0 6px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
 .t-rows { position: relative; }
-.t-row { display: flex; justify-content: space-between; height: 38px; line-height: 38px; font-size: 19px; color: rgba(243, 246, 252, .8); border-bottom: 1px solid var(--rule); }
+.t-row { display: flex; justify-content: space-between; height: 38px; line-height: 38px; font-size: 19px; color: rgba(244, 244, 244, .8); border-bottom: 1px solid var(--rule); }
 .t-row.first { color: var(--text); }
 .t-empty { font-size: 14px; margin-top: 18px; }
 .shove-move { transition: transform 360ms var(--ease); }

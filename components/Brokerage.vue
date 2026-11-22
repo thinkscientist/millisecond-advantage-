@@ -115,7 +115,7 @@ const marks = computed(() => [
 <style scoped>
 .brokerage { position: relative; width: 1680px; height: 660px; }
 .q { position: absolute; left: 0; top: 0; width: 1060px; }
-.q-text { font-size: 54px; line-height: 62px; margin-top: 12px; letter-spacing: -0.02em; }
+.q-text { font-size: 54px; line-height: 62px; margin-top: 12px; letter-spacing: 0; }
 .since { position: absolute; right: 0; top: 0; width: 500px; box-sizing: border-box; padding: 20px 26px; }
 .since-num { font-size: 88px; line-height: 1; margin: 14px 0 12px; font-variant-numeric: tabular-nums; }
 .since :deep(.flap) { margin: 14px 0 12px; }

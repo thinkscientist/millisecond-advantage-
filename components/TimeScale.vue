@@ -64,7 +64,7 @@ const TICKS = [
 .ts-sub { font-size: 16px; margin-top: 4px; }
 .ts-pin { position: absolute; bottom: 0; left: -1px; width: 3px; height: 26px; border-radius: 2px; }
 .text .ts-pin { background: var(--text); }
-.hit .ts-pin { background: var(--hit); box-shadow: 0 0 14px rgba(232, 213, 176, .7); }
+.hit .ts-pin { background: var(--hit); box-shadow: 0 0 14px rgba(120, 169, 255, .7); }
 .hit .ts-label { color: var(--hit); }
 .accent .ts-pin { background: var(--accent); }
 .accent .ts-label { color: var(--accent); }

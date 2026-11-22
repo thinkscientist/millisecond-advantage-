@@ -68,8 +68,8 @@ const { b } = useBeats()
   bottom: 120px;
   font-size: 40px;
   line-height: 50px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-weight: 400;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 </style>

@@ -84,7 +84,7 @@ function draw() {
     const x = xOfAge(age)
     const fresh = bar.live && age < 2500
     const a = fresh ? 1 : Math.max(0.28, 0.85 - (Math.log10(Math.max(age, NEWEST)) - L0) / (L1 - L0) * 0.55)
-    g.fillStyle = fresh ? `rgba(232,213,176,${a})` : `rgba(169,183,217,${a})`
+    g.fillStyle = fresh ? `rgba(120, 169, 255,${a})` : `rgba(198, 198, 198,${a})`
     g.fillRect(x - bar.w / 2, bar.lane * laneH + laneH * 0.18, bar.w, laneH * 0.64)
   }
 }
@@ -272,7 +272,7 @@ watch([isStatic, clicks, canvas], () => {
 .chip-host :deep(.st-chip) {
   position: absolute; right: 0; top: 0; width: 132px; box-sizing: border-box;
   padding: 7px 9px; border-radius: var(--radius); background: var(--hit); color: var(--ink);
-  font-size: 14px; line-height: 1.4; box-shadow: 0 0 22px rgba(232, 213, 176, .5);
+  font-size: 14px; line-height: 1.4; box-shadow: 0 0 22px rgba(120, 169, 255, .5);
 }
 .axis { position: absolute; left: 0; width: 1680px; height: 20px; }
 .axis span { position: absolute; transform: translateX(-50%); font-size: 15px; white-space: nowrap; transition: color 400ms; }

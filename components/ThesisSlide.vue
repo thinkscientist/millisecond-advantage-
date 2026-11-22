@@ -42,14 +42,14 @@ const agent = computed(() => (isStatic.value || !live.value ? 14_400 : 14_400 + 
 
 <style scoped>
 .thesis { position: absolute; left: 120px; right: 120px; top: 200px; }
-h1 { font-size: 112px; line-height: 1.08; margin: 0 0 72px; letter-spacing: -0.035em; }
+h1 { font-size: 112px; line-height: 1.08; margin: 0 0 72px; letter-spacing: 0; }
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .moving .pair { animation: ss-enter 700ms var(--ease-out) 700ms both; }
 .who { padding: 26px 30px; }
 .who p { font-size: 28px; line-height: 1.35; margin: 12px 0 0; color: var(--muted); }
 .big { font-size: 72px; line-height: 1; margin-top: 16px; display: flex; align-items: baseline; gap: 16px; }
 .unit { font-size: 20px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
-.agent { border-color: rgba(232, 213, 176, .45); }
+.agent { border-color: rgba(120, 169, 255, .45); }
 .agent .label { display: flex; align-items: center; gap: 10px; color: var(--hit); }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hit); }
 </style>

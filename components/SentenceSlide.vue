@@ -51,13 +51,13 @@ const PROPS = [
 .sentence { position: absolute; left: 120px; right: 120px; top: 150px; }
 .top { display: flex; justify-content: space-between; }
 .asof { font-size: 20px; }
-.big { font-size: 62px; line-height: 1.28; font-weight: 600; letter-spacing: -0.02em; margin: 40px 0 56px; max-width: 1640px; }
+.big { font-size: 62px; line-height: 1.28; font-weight: 300; letter-spacing: 0; margin: 40px 0 56px; max-width: 1640px; }
 .w { display: inline-block; }
 .pillar { color: var(--hit); }
 .num { font-size: 18px; color: var(--accent); margin-left: 4px; position: relative; top: -1.6em; letter-spacing: 0; }
 .props { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .prop { border-top: 2px solid var(--text); padding-top: 18px; }
-.prop-t { font-size: 34px; font-weight: 700; margin-bottom: 8px; }
+.prop-t { font-size: 34px; font-weight: 600; margin-bottom: 8px; }
 .prop .label { font-size: 16px; }
 .note { font-size: 28px; margin: 48px 0 0; }
 .moving .w { animation: wordin 520ms var(--ease) var(--d) both; }

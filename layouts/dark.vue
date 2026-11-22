@@ -4,7 +4,6 @@
  *  - content fades in on slide entry (600 ms, 130 ms delay)
  *  - scene nav at the bottom: sections, one tick per slide, page counter
  *  - beat indicator bottom-right (one block per click)
- *  - a faint grain vignette at the edges
  * Sections come from each slide's `scene:` frontmatter ("PILLARS · 03").
  */
 import { computed } from 'vue'
@@ -57,10 +56,6 @@ const pad = (n: number) => String(n).padStart(2, '0')
       <div class="page">{{ pad($page) }} / {{ pad(total) }}</div>
     </nav>
 
-    <svg class="grain" aria-hidden="true">
-      <filter id="grain-f"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" /><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0" /></filter>
-      <rect width="100%" height="100%" filter="url(#grain-f)" />
-    </svg>
   </div>
 </template>
 
@@ -90,8 +85,8 @@ const pad = (n: number) => String(n).padStart(2, '0')
 .scene-nav .sec.future { opacity: 0.62; }
 .scene-nav .sec-name { cursor: pointer; }
 .scene-nav .ticks { display: flex; gap: 6px; }
-.scene-nav .tick { width: 28px; height: 4px; background: rgba(169, 183, 217, 0.22); cursor: pointer; transition: background-color 200ms ease; }
-.scene-nav .tick.past { background: rgba(169, 183, 217, 0.7); }
+.scene-nav .tick { width: 28px; height: 4px; background: rgba(198, 198, 198, 0.22); cursor: pointer; transition: background-color 200ms ease; }
+.scene-nav .tick.past { background: rgba(198, 198, 198, 0.7); }
 .scene-nav .tick.on { background: var(--text); }
 .scene-nav .page { margin-left: auto; color: var(--muted); }
 
@@ -99,14 +94,8 @@ const pad = (n: number) => String(n).padStart(2, '0')
   position: absolute; right: 120px; bottom: 178px; display: flex; gap: 6px; z-index: 3;
   padding: 8px; border: 1px solid var(--panel-line); border-radius: var(--radius); background: var(--panel);
 }
-.beat-ind span { width: 26px; height: 14px; border-radius: 2px; background: rgba(169, 183, 217, 0.18); transition: background-color 250ms ease; }
-.beat-ind span.on { background: rgba(169, 183, 217, 0.6); }
+.beat-ind span { width: 26px; height: 14px; border-radius: 2px; background: rgba(198, 198, 198, 0.18); transition: background-color 250ms ease; }
+.beat-ind span.on { background: rgba(198, 198, 198, 0.6); }
 .beat-ind span.now { background: var(--text); }
 
-.grain {
-  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4;
-  opacity: 0.16; mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(ellipse 78% 74% at 50% 50%, transparent 72%, #000 100%);
-  mask-image: radial-gradient(ellipse 78% 74% at 50% 50%, transparent 72%, #000 100%);
-}
 </style>

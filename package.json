@@ -2,6 +2,7 @@
   "name": "millisecond-advantage",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "slidev --open false",
     "build": "slidev build --base /",
