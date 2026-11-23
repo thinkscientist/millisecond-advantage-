@@ -2,7 +2,7 @@ name: Deploy deck to GitHub Pages
 
 on:
   push:
-    branches: [main, claude/beautiful-cerf-c42ted]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

@@ -43,6 +43,6 @@ type and IBM Plex Mono for labels. Fonts: IBM Plex, SIL OFL 1.1 (`public/fonts/I
 ## GitHub Pages
 
 `.github/workflows/pages.yml` builds with `pnpm build:web` (hash routing, relative paths)
-and deploys on every push to `main` (and this working branch). One-time setup in the repo:
+and deploys on every push to `main` (or run it by hand from the Actions tab). One-time setup in the repo:
 **Settings → Pages → Build and deployment → Source: GitHub Actions**. The deck is then at
 `https://<owner>.github.io/<repo>/`, and `#/9` deep-links to a slide.
